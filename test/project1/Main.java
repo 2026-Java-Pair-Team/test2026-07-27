@@ -7,7 +7,7 @@ public class Main {
 		NumberGame numGame = new NumberGame();
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("偶数奇数当てマンです。");
-		
+		System.out.print("数字:");
 		int num = scanner.nextInt();
 		System.out.println(numGame.judge(num));
 	}
