@@ -22,4 +22,11 @@ public class Wizard extends Character {
 		return "魔法使い";
 	}
 
+	@Override
+	public void attack(Monster monster) {
+		System.out.println(name + "が魔法で攻撃した！");
+		// 魔法使い物理攻撃マジっすか？杖でドーン！
+		monster.takeDamage(attack);
+	}
+
 }

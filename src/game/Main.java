@@ -1,10 +1,12 @@
 package game;
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
+		Random random = new Random();
 		int partySize = 0;
 
 		System.out.println("============================");
@@ -105,6 +107,64 @@ public class Main {
 		System.out.println("============================");
 
 		player.info();
+
+		// モンスター名前追加したいのいたらどうぞ
+		String[] monsterNames = new String[] { "スライム", "ゴブリン", "オーク", "ドラゴン" ,"エルフ"};
+		Monster monster = new Monster(monsterNames[random.nextInt(monsterNames.length)], random.nextInt(100) + 50, random.nextInt(30) + 10);
+
+
+		System.out.println("\n============================");
+		System.out.println("	 モンスターが現れた！");
+		System.out.println("============================");
+		monster.info();
+
+		System.out.println("\n============================");
+		System.out.println("	 戦闘開始！");
+		System.out.println("============================");
+
+		while (player.isAlive() && monster.isAlive()) {
+			System.out.println("\n[行動を選択してください]");
+			System.out.println(" 1. 攻撃");
+			System.out.println(" 2. 逃げる");
+			System.out.print("▶ ︎");
+
+			int action = 0;
+			while (true) {
+				try {
+					action = scanner.nextInt();
+					if (action == 1 || action == 2) {
+						break;
+					}
+					System.out.println(">> 正しい番号を入力してください\n");
+				} catch (Exception e) {
+					System.out.println(">> 数字を入力してください\n");
+					scanner.nextLine();
+				}
+			}
+
+			if (action == 1) {
+				player.attack(monster);
+				if (monster.isAlive()) {
+					System.out.println();
+					monster.attack(player);
+					System.out.println("" + player.getName() + "の残りHP：" + player.getHp());
+				} else {
+					System.out.println("\n============================");
+					System.out.println("	 " + monster.getName() + "を倒した！");
+					System.out.println("============================");
+				}
+			} else if (action == 2) {
+				System.out.println(player.getName() + "は逃げ出した！");
+				break;
+			}
+			
+		}
+
+		if (!player.isAlive()) {
+			System.out.println("\n============================");
+			System.out.println("	 " + player.getName() + "は倒れた！");
+			System.out.println("============================");
+		}
 
 		scanner.close();
 	}

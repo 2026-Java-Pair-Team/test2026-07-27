@@ -1,6 +1,6 @@
 package game;
 
-public class Character {
+public abstract class Character {
 	protected String name;
 	protected int hp;
 	protected int attack;
@@ -31,6 +31,23 @@ public class Character {
 
 	public int getAttack() {
 		return attack;
+	}
+
+	// 攻撃
+	public abstract void attack(Monster monster);
+
+	// ダメージを受ける
+	public void takeDamage(int damage) {
+		hp -= damage;
+		if (hp < 0) {
+			hp = 0;
+		}
+		System.out.println(name + "は" + damage + "ダメージ受けた！");
+	}
+
+	// 生存判定
+	public boolean isAlive() {
+		return hp > 0;
 	}
 
 }
