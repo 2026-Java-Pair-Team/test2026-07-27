@@ -1,10 +1,12 @@
 
+package project1;
+
 public class NumberGame {
-	public string judge(int num) {
+	public String judge(int num) {
 		 if (num % 2 == 0) {
 			return "偶数です";
 		} else {
-			return "整数です";
+			return "奇数です";
 		}
 	}
 }

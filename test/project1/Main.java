@@ -9,6 +9,6 @@ public class Main {
 		System.out.println("偶数奇数当てマンです。");
 		
 		int num = scanner.nextInt();
-		numGame.judge(num);
+		System.out.println(numGame.judge(num));
 	}
 }
