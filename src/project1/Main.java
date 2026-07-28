@@ -8,10 +8,10 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("偶数奇数当てマンです。");
 		System.out.println();
-		while (true) {
-			System.out.print("数字:");
-			int num = scanner.nextInt();
-			System.out.println(numGame.judge(num));
-		}
+
+		System.out.print("数字:");
+		int num = scanner.nextInt();
+		System.out.println(numGame.judge(num));
+
 	}
 }
