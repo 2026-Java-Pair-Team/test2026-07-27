@@ -8,7 +8,7 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("偶数奇数当てマンです。");
 		
-		num = scanner.nextInt();
+		int num = scanner.nextInt();
 		numGame.judge(num);
 	}
 }
