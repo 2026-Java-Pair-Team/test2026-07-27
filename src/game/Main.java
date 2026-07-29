@@ -118,10 +118,10 @@ public class Main {
 			System.out.println("\n[行動を選択してください]");
 			System.out.println(" 1. 攻撃");
 			System.out.println(" 2. 逃げる");
-			System.out.print("▶ ︎");
 
 			int action = 0;
 			while (true) {
+				System.out.print("▶ ︎");
 				try {
 					action = scanner.nextInt();
 					if (action == 1 || action == 2) {
@@ -167,25 +167,24 @@ public class Main {
 	}
 
 	private static void showHpGauge(String name, int hp, int maxHp) {
-    int gaugeLength = 10;
+		int gaugeLength = 10;
 
-    int filledLength = hp * gaugeLength / maxHp;
+		int filledLength = hp * gaugeLength / maxHp;
 
-    // 0～10の範囲から外れないようにする
-    filledLength = Math.max(0, Math.min(gaugeLength, filledLength));
+		// 0～10の範囲から外れないようにする
+		filledLength = Math.max(0, Math.min(gaugeLength, filledLength));
 
-    StringBuilder gauge = new StringBuilder();
+		StringBuilder gauge = new StringBuilder();
 
-    for (int i = 0; i < gaugeLength; i++) {
-        if (i < filledLength) {
-            gauge.append("■");
-        } else {
-            gauge.append("□");
-        }
-    }
+		for (int i = 0; i < gaugeLength; i++) {
+			if (i < filledLength) {
+				gauge.append("■");
+			} else {
+				gauge.append("□");
+			}
+		}
 
-    System.out.println(
-        name + " HP [" + gauge + "] " + hp + "/" + maxHp
-    );
-}
+		System.out.println("【" + name + "】");
+		System.out.println(" HP [" + gauge + "] " + hp + "/" + maxHp);
+	}
 }
