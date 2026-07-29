@@ -18,4 +18,10 @@ public class Warrior extends Character {
 		return "戦士";
 	}
 
+	@Override
+	public void attack(Monster monster) {
+		System.out.println(name + "が剣で攻撃した！");
+		monster.takeDamage(attack);
+	}
+
 }
