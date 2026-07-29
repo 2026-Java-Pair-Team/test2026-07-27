@@ -42,7 +42,7 @@ public abstract class Character {
 		if (hp < 0) {
 			hp = 0;
 		}
-		System.out.println(name + "は" + damage + "ダメージ受けた！");
+		System.out.println(" " + name + "は" + damage + "ダメージ受けた！");
 	}
 
 	// 生存判定
