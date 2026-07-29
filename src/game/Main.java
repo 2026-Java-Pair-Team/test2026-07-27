@@ -101,7 +101,7 @@ public class Main {
 
 		// モンスター名前追加したいのいたらどうぞ
 		int playerMaxHp = player.getHp();
-		String[] monsterNames = new String[] { "スライム", "ゴブリン", "オーク", "ドラゴン", "エルフ" };
+		String[] monsterNames = new String[] { "スライム", "ゴブリン", "オーク", "ミニドラゴン", "最初の村のヤンキー" };
 		Monster monster = new Monster(monsterNames[random.nextInt(monsterNames.length)], random.nextInt(100) + 50,
 				random.nextInt(30) + 10);
 
