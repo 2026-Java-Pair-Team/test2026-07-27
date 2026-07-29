@@ -109,9 +109,12 @@ public class Main {
 		player.info();
 
 		// モンスター名前追加したいのいたらどうぞ
+		int playerMaxHp = player.getHp();
 		String[] monsterNames = new String[] { "スライム", "ゴブリン", "オーク", "ドラゴン", "エルフ" };
 		Monster monster = new Monster(monsterNames[random.nextInt(monsterNames.length)], random.nextInt(100) + 50,
 				random.nextInt(30) + 10);
+
+		int monsterMaxHp = monster.getHp();
 
 		System.out.println("\n============================");
 		System.out.println("      モンスターが現れた！");
@@ -151,8 +154,8 @@ public class Main {
 
 					//					System.out.println(" " + player.getName() + "の残りHP：" + player.getHp());
 					System.out.println("\n-------------------------");
-					System.out.println("【" + player.getName() + "】		HP:" + player.getHp());
-					System.out.println("【" + monster.getName() + "】	HP:" + monster.getHp());
+					showHpGauge(player.getName(), player.getHp(), playerMaxHp);
+					showHpGauge(monster.getName(), monster.getHp(), monsterMaxHp);
 					System.out.println("-------------------------");
 				} else {
 					System.out.println("\n " + monster.getName() + "を倒した！");
@@ -173,4 +176,27 @@ public class Main {
 
 		scanner.close();
 	}
+
+	private static void showHpGauge(String name, int hp, int maxHp) {
+    int gaugeLength = 10;
+
+    int filledLength = hp * gaugeLength / maxHp;
+
+    // 0～10の範囲から外れないようにする
+    filledLength = Math.max(0, Math.min(gaugeLength, filledLength));
+
+    StringBuilder gauge = new StringBuilder();
+
+    for (int i = 0; i < gaugeLength; i++) {
+        if (i < filledLength) {
+            gauge.append("■");
+        } else {
+            gauge.append("□");
+        }
+    }
+
+    System.out.println(
+        name + " HP [" + gauge + "] " + hp + "/" + maxHp
+    );
+}
 }
