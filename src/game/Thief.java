@@ -24,7 +24,7 @@ public class Thief extends Character {
 
 	@Override
 	public void attack(Monster monster) {
-		System.out.println(name + "が短剣で攻撃した！");
+		System.out.println(" " + name + "が短剣で攻撃した！");
 		monster.takeDamage(attack);
 	}
 }

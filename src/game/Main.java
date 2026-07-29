@@ -1,7 +1,7 @@
 package game;
 
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
@@ -109,17 +109,17 @@ public class Main {
 		player.info();
 
 		// モンスター名前追加したいのいたらどうぞ
-		String[] monsterNames = new String[] { "スライム", "ゴブリン", "オーク", "ドラゴン" ,"エルフ"};
-		Monster monster = new Monster(monsterNames[random.nextInt(monsterNames.length)], random.nextInt(100) + 50, random.nextInt(30) + 10);
-
+		String[] monsterNames = new String[] { "スライム", "ゴブリン", "オーク", "ドラゴン", "エルフ" };
+		Monster monster = new Monster(monsterNames[random.nextInt(monsterNames.length)], random.nextInt(100) + 50,
+				random.nextInt(30) + 10);
 
 		System.out.println("\n============================");
-		System.out.println("	 モンスターが現れた！");
+		System.out.println("      モンスターが現れた！");
 		System.out.println("============================");
 		monster.info();
 
 		System.out.println("\n============================");
-		System.out.println("	 戦闘開始！");
+		System.out.println("	 戦闘開始");
 		System.out.println("============================");
 
 		while (player.isAlive() && monster.isAlive()) {
@@ -143,27 +143,32 @@ public class Main {
 			}
 
 			if (action == 1) {
+				System.out.println("\n【" + player.getName() + "のターン】");
 				player.attack(monster);
 				if (monster.isAlive()) {
-					System.out.println();
+					System.out.println("\n【" + monster.getName() + "のターン】");
 					monster.attack(player);
-					System.out.println("" + player.getName() + "の残りHP：" + player.getHp());
+
+					//					System.out.println(" " + player.getName() + "の残りHP：" + player.getHp());
+					System.out.println("\n-------------------------");
+					System.out.println("【" + player.getName() + "】		HP:" + player.getHp());
+					System.out.println("【" + monster.getName() + "】	HP:" + monster.getHp());
+					System.out.println("-------------------------");
 				} else {
+					System.out.println("\n " + monster.getName() + "を倒した！");
 					System.out.println("\n============================");
-					System.out.println("	 " + monster.getName() + "を倒した！");
+					System.out.println("	  戦闘勝利");
 					System.out.println("============================");
 				}
 			} else if (action == 2) {
-				System.out.println(player.getName() + "は逃げ出した！");
+				System.out.println("\n" + player.getName() + "は逃げ出した...");
 				break;
 			}
-			
+
 		}
 
 		if (!player.isAlive()) {
-			System.out.println("\n============================");
-			System.out.println("	 " + player.getName() + "は倒れた！");
-			System.out.println("============================");
+			System.out.println("\n" + player.getName() + "は倒れた...");
 		}
 
 		scanner.close();

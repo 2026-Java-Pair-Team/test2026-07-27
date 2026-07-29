@@ -29,21 +29,22 @@ public class Monster {
 		return attack;
 	}
 
-    public void takeDamage(int damage){
-        hp -= damage;
+	public void takeDamage(int damage) {
+		hp -= damage;
 
-        if (hp < 0) {
-            hp = 0;
-        }
+		if (hp < 0) {
+			hp = 0;
+		}
 
-        System.out.println(name + "は" + damage + "ダメージ受けた！");
-    }
+		System.out.println(" " + name + "は" + damage + "ダメージ受けた！");
+	}
 
-    public void attack(Character target){
-        System.out.println(name + "の攻撃!");
-        target.takeDamage(attack);
-    }
-    public boolean isAlive(){
-        return hp > 0;
-    }
+	public void attack(Character target) {
+		System.out.println(" " + name + "の攻撃!");
+		target.takeDamage(attack);
+	}
+
+	public boolean isAlive() {
+		return hp > 0;
+	}
 }
