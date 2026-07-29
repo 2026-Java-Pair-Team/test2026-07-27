@@ -78,9 +78,6 @@ public class Main {
 			System.out.println();
 		}
 
-		//		System.out.println("============================");
-		//		System.out.println("      出撃メンバーを選択");
-		//		System.out.println("============================");
 		System.out.println("[出撃メンバーを選択してください]");
 
 		int select = 0;
@@ -102,12 +99,6 @@ public class Main {
 		}
 		Character player = party[select - 1];
 
-		System.out.println("\n============================");
-		System.out.println("	 出撃メンバー");
-		System.out.println("============================");
-
-		player.info();
-
 		// モンスター名前追加したいのいたらどうぞ
 		int playerMaxHp = player.getHp();
 		String[] monsterNames = new String[] { "スライム", "ゴブリン", "オーク", "ドラゴン", "エルフ" };
@@ -117,13 +108,11 @@ public class Main {
 		int monsterMaxHp = monster.getHp();
 
 		System.out.println("\n============================");
-		System.out.println("      モンスターが現れた！");
-		System.out.println("============================");
-		monster.info();
-
-		System.out.println("\n============================");
 		System.out.println("	 戦闘開始");
 		System.out.println("============================");
+
+		System.out.println("モンスターが現れた！");
+		monster.info();
 
 		while (player.isAlive() && monster.isAlive()) {
 			System.out.println("\n[行動を選択してください]");
