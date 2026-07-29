@@ -6,6 +6,68 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
+
+		while (true) {
+			playGame(scanner);
+
+			System.out.println("\n次の敵を探しますか？");
+			System.out.println("1. 探す");
+			System.out.println("2. 街へ戻る");
+
+			int next = 0;
+
+			while (true) {
+				try {
+					System.out.print("▶ ");
+					next = scanner.nextInt();
+
+					if (next == 1 || next == 2) {
+						break;
+					}
+
+					System.out.println(">> 1か2を入力してください\n");
+
+				} catch (Exception e) {
+					System.out.println(">> 数字を入力してください\n");
+					scanner.nextLine();
+				}
+			}
+
+			if (next == 1) {
+				System.out.println();
+				continue;
+			} else {
+				System.out.println("\n街へ戻ります...");
+				break;
+			}
+		}
+
+		scanner.close();
+	}
+
+	private static void showHpGauge(String name, int hp, int maxHp) {
+		int gaugeLength = 10;
+
+		int filledLength = hp * gaugeLength / maxHp;
+
+		// 0～10の範囲から外れないようにする
+		filledLength = Math.max(0, Math.min(gaugeLength, filledLength));
+
+		StringBuilder gauge = new StringBuilder();
+
+		for (int i = 0; i < gaugeLength; i++) {
+			if (i < filledLength) {
+				gauge.append("■");
+			} else {
+				gauge.append("□");
+			}
+		}
+
+		System.out.println("【" + name + "】");
+		System.out.println(" HP [" + gauge + "] " + hp + "/" + maxHp);
+	}
+
+	private static void playGame(Scanner scanner) {
 		Random random = new Random();
 		int partySize = 0;
 
@@ -163,28 +225,5 @@ public class Main {
 			System.out.println("\n" + player.getName() + "は倒れた...");
 		}
 
-		scanner.close();
-	}
-
-	private static void showHpGauge(String name, int hp, int maxHp) {
-		int gaugeLength = 10;
-
-		int filledLength = hp * gaugeLength / maxHp;
-
-		// 0～10の範囲から外れないようにする
-		filledLength = Math.max(0, Math.min(gaugeLength, filledLength));
-
-		StringBuilder gauge = new StringBuilder();
-
-		for (int i = 0; i < gaugeLength; i++) {
-			if (i < filledLength) {
-				gauge.append("■");
-			} else {
-				gauge.append("□");
-			}
-		}
-
-		System.out.println("【" + name + "】");
-		System.out.println(" HP [" + gauge + "] " + hp + "/" + maxHp);
 	}
 }
